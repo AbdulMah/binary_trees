@@ -6,16 +6,15 @@
  * @size: size of array
  * Return: AVL tree from array
  */
+
 avl_t *array_to_avl(int *array, size_t size)
 {
-	size_t i, j = 0;
-	avl_t *root;
+	avl_t *tree = NULL;
+	size_t i, j;
 
-	root = NULL;
-	if (size == 0)
-	{
+	if (array == NULL)
 		return (NULL);
-	}
+
 	for (i = 0; i < size; i++)
 	{
 		for (j = 0; j < i; j++)
@@ -25,11 +24,10 @@ avl_t *array_to_avl(int *array, size_t size)
 		}
 		if (j == i)
 		{
-			if (avl_insert(&root, array[i]) == NULL)
-			{
+			if (avl_insert(&tree, array[i]) == NULL)
 				return (NULL);
-			}
 		}
 	}
-	return (root);
+
+	return (tree);
 }
