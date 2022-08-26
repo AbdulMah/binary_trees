@@ -1,49 +1,40 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_nodes - Function that measures the balance factor of binary tree
- * @tree: a pointer to the node of the tree to measure the size
- * If tree is NULL, return 0
- * Return: number of children node
+ * binary_tree_balance - A function that measures the balance factor of a
+ * binary tree.
+ * @tree: Pointer to root node to calculate balance factor.
+ * Return: The balance factor of the tree.
  */
-
-size_t binary_tree_height_b(const binary_tree_t *tree)
+int binary_tree_balance(const binary_tree_t *tree)
 {
-	size_t value_b = 0;
-	size_t value_a = 0;
+	size_t left_height = 0, right_height = 0;
 
-	if (tree == NULL)
-	{
+	if (!tree)
 		return (0);
-	}
-	else
-	{
-		if (tree)
-		{
-			value_b = tree->left ? 1 + binary_tree_height_b(tree->left) : 1;
-			value_a = tree->right ? 1 + binary_tree_height_b(tree->right) : 1;
-		}
-		//if (value_b > value_a) { return value_b; }
-		//else { return value_a; }
-		return ((value_b > value_a) ? value_b : value_a);
-	}
+
+	left_height = binary_tree_height(tree->left);
+	right_height = binary_tree_height(tree->right);
+	return (left_height - right_height);
 }
 
 /**
- * binary_tree_balance - Measures balance factor of a binary tree
- * @tree: tree to go through
- * Return: balanced factor
+ * binary_tree_height - gets the height of a binary tree
+ * @tree: root node to draw height from for tree
+ * Return: size_t representing height, 0 on failure or NULL.
  */
-
-int binary_tree_balance(const binary_tree_t *tree)
+size_t binary_tree_height(const binary_tree_t *tree)
 {
-	int right = 0, left = 0, total = 0;
+	size_t left_size = 0;
+	size_t right_size = 0;
 
-	if (tree)
-	{
-		left = ((int)binary_tree_height_b(tree->left));
-		right = ((int)binary_tree_height_b(tree->right));
-		total = left - right;
-	}
-	return (total);
+	if (tree == NULL)
+		return (0);
+
+	left_size += 1 + binary_tree_height(tree->left);
+	right_size += 1 + binary_tree_height(tree->right);
+	if (left_size > right_size)
+		return (left_size);
+
+	return (right_size);
 }
