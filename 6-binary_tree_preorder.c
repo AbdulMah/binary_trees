@@ -1,4 +1,5 @@
 #include "binary_trees.h"
+
 /**
  * binary_tree_preorder - function that goes through a binary tree using preorder traversal
  * @tree: a pointer to the root of node of the tree to traverse
@@ -6,6 +7,7 @@
  * if tree or func is NULL, do nothing
  * Return: Nothing
  */
+
 void binary_tree_preorder(const binary_tree_t *tree, void (*func)(int))
 {
 	if (tree == NULL || func == NULL)
