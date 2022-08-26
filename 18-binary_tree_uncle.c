@@ -3,7 +3,6 @@
 /**
  * binary_tree_sibling - function that finds the  uncle of a node
  * @node: pointer to the node to find the uncle
- * Condition: if node is NULL or parent is NULL return NULL
  * Return: The uncle node, if node has no uncle, return NULL
  */
 
