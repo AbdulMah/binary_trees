@@ -10,9 +10,8 @@ link_t *new_node(binary_tree_t *node)
 
 	new =  malloc(sizeof(link_t));
 	if (new == NULL)
-	{
 		return (NULL);
-	}
+		
 	new->node = node;
 	new->next = NULL;
 
